@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <title>{% block title%} {% endblock %}</title>
+  <style>
+   {% block css%} {% endblock %}
+  </style>
+</head>
+
+<body>
+  {%load static%}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/shop">Cart Zone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/about">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/shop/contact">Contact Us</a>
+        </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/blog">Blog</a>
+        </li>
+      </ul>
+      <form method="get" action="/shop/search/" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search"  name="search" id="search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+
+      <button type="button" class="btn btn-secondary mx-2" id="popcart" data-html="true" data-container="body"
+        data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+        Cart(<span id="cart">0</span>)
+      </button>
+      <a href='/shop/checkout'><button class="btn btn-primary btn-sm mx-2">Checkout</button></a>
+      <button class='btn btn-primary btn-sm' onclick='clearcart()' id='clearart'>ClearCart</button>
+
+
+
+    </div>
+  </nav>
+
+
+  {% block body %} {% endblock %}
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+<!--  <script>-->
+
+<!--    if (localStorage.getItem('cart') == null) {-->
+<!--      var cart = {};-->
+<!--    }-->
+<!--    else {-->
+<!--      cart = JSON.parse(localStorage.getItem('cart'));-->
+<!--      document.getElementById('cart').innerHTML = Object.keys(cart).length;-->
+<!--    }-->
+<!--    $('.cart').click(function () {-->
+
+<!--      var idstr = this.id.toString();-->
+<!--      console.log(idstr);-->
+<!--      if (cart[idstr] != undefined) {-->
+<!--        cart[idstr] = cart[idstr] + 1;-->
+<!--      }-->
+<!--      else {-->
+<!--        cart[idstr] = 1;-->
+<!--      }-->
+<!--      console.log(cart);-->
+<!--      localStorage.setItem('cart', JSON.stringify(cart));-->
+<!--      document.getElementById('cart').innerHTML = Object.keys(cart).length;-->
+<!--    });-->
+
+<!--    $('#popcart').popover();-->
+
+
+<!--updatepopover(cart);-->
+<!--function updatepopover(cart){-->
+<!--var popstr="";-->
+<!--popstr=popstr+"<h5> cart your items in my shopping cart</h5>";-->
+<!--var i=1;-->
+<!--for (var item in cart){-->
+<!--popstr=popstr+"<b>"+i+"</b>";-->
+<!--popstr=popstr+document.getElementById('name'+item) + "Qty: " +cart[item] + '<br>';-->
+<!--i=i+1;-->
+<!--}-->
+<!--popstr=popstr+"</div>"-->
+<!--document.getElementById('popcart').setAttribute('data-content', popstr);-->
+<!-- $('#popcart').popover('show');-->
+<!--}-->
+
+
+<!--    function updatecart(cart){-->
+<!--      for (var item in cart){-->
+<!--        document.getElementById('div'+item).innerHTML="<button id='minus"+item+"'class='btn btn-primary minus'>-</button> <span id='val"+item+"''>"+cart[item]+"</span> <button id='plus" + item + "'class='btn btn-primary plus'>+</button>";-->
+
+<!--      }-->
+<!--    }-->
+<!-- -->
+<!-- -->
+<!-- -->
+<!--  </script>-->
+
+{% block js%} {%endblock%}
+
+</body>
+
+</html>

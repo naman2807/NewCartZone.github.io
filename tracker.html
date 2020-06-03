@@ -1,0 +1,82 @@
+{% extends 'shop/basic.html'%}
+{% block title %}product{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="col my-4">
+        <div>
+            <h2>Step-1: Cart Zone Tracker: Track Your Order Here</h2>
+            <h5>Enter Your order id and email address to track your order</h5>
+        <form method="post" action="#" id="trackerform">{% csrf_token %}
+             <div class="form-group col-md-6">
+      <label for="orderid">Order Id</label>
+      <input type="text" class="form-control" name="orderid"  id="orderid">
+    </div>
+            <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" name="email" id="inputEmail4">
+    </div>
+             <button type="submit" class="btn btn-primary">Track order</button>
+
+
+  </form>
+        </div>
+    </div>
+    <div class="col my-4">
+        <h2>Step-2: Enter Your Address And Other Details</h2>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+{%endblock%}
+{% block js%}
+
+
+<script>
+
+$('#trackerform').submit(function(event){
+
+$('#item').empty();
+var formdata={
+'orderid': $('input[name=orderid]').val(),
+'email': $('input[name=email]').val(),
+'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+}
+<!--$.ajax({-->
+
+<!--    type:'POST',-->
+<!--    url:'/shop/tracker',-->
+<!--    data: formdata,-->
+<!--    encode:True-->
+<!--    });-->
+
+<!--    .done(function(data) {-->
+        console.log(formdata)
+<!--        });-->
+
+
+    event.preventDefault();
+})
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%endblock%}
